@@ -22,12 +22,12 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>37/37</span>
+        <span class='fraction'>39/39</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>12/12</span>
+        <span class='fraction'>16/16</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -37,7 +37,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>37/37</span>
+        <span class='fraction'>39/39</span>
       </div>
     </div>
   </div>
@@ -126,7 +126,10 @@
 81
 82
 83
-84</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+84
+85
+86
+87</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -150,7 +153,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">60×</span>
+<span class="cline-any cline-yes">61×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -167,12 +170,15 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">8×</span>
-<span class="cline-any cline-yes">8×</span>
-<span class="cline-any cline-yes">8×</span>
-<span class="cline-any cline-yes">8×</span>
-<span class="cline-any cline-yes">30×</span>
-<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-yes">9×</span>
+<span class="cline-any cline-yes">9×</span>
+<span class="cline-any cline-yes">9×</span>
+<span class="cline-any cline-yes">9×</span>
+<span class="cline-any cline-yes">32×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">31×</span>
+<span class="cline-any cline-yes">18×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">13×</span>
 <span class="cline-any cline-yes">2×</span>
@@ -187,9 +193,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">8×</span>
-<span class="cline-any cline-yes">8×</span>
-<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">9×</span>
+<span class="cline-any cline-yes">9×</span>
+<span class="cline-any cline-yes">3×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">6×</span>
 <span class="cline-any cline-yes">10×</span>
@@ -233,7 +239,7 @@ class Calculator {
     }
 &nbsp;
     isDigit(data) {
-        return /^[0-9]+$/.test(data);
+        return /^-?[0-9]+$/.test(data);
 &nbsp;
     }
 &nbsp;
@@ -249,18 +255,21 @@ class Calculator {
         stack.push(data);
     }
 &nbsp;
-    createString(str) {
+    createString(input) {
         let result = [];
         let stack = [];
-        str = str.split(' ');
-        for (let symbol in str) {
-            if (this.isDigit(str[symbol])) {
-                result.push(str[symbol])
+        input = input.split(' ');
+        for (let i = 0; i &lt; input.length; ++i) {
+            if (input[i] === '/' &amp;&amp; input[i + 1] === '0') {
+                return 'error'
+            }
+            if (this.isDigit(input[i])) {
+                result.push(input[i])
             } else {
-                if (str[symbol].length &gt; 1) {
+                if (input[i].length &gt; 1) {
                     return 'error';
                 }
-                this.pushToStack(result, stack, str[symbol]);
+                this.pushToStack(result, stack, input[i]);
             }
         }
         while (stack.length) {
@@ -272,7 +281,7 @@ class Calculator {
     calculate(str) {
         let data = this.createString(str);
         if (data === 'error') {
-            return data;
+            return 'error';
         }
         while (data.length &gt; 1) {
             for (let obj in data) {
@@ -291,14 +300,14 @@ class Calculator {
 &nbsp;
 exports.calculator = Calculator;
 // const c = new Calculator();
-// console.log(c.calculate('1 +- 2'));
+// console.log(c.calculate('1 / 0'));
 &nbsp;</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Oct 18 2018 19:26:45 GMT+0300 (MSK)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Oct 18 2018 20:10:17 GMT+0300 (MSK)
 </div>
 </div>
 <script src="../prettify.js"></script>

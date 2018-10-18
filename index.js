@@ -22,7 +22,7 @@ class Calculator {
     }
 
     isDigit(data) {
-        return /^[0-9]+$/.test(data);
+        return /^-?[0-9]+$/.test(data);
 
     }
 
@@ -38,18 +38,21 @@ class Calculator {
         stack.push(data);
     }
 
-    createString(str) {
+    createString(input) {
         let result = [];
         let stack = [];
-        str = str.split(' ');
-        for (let symbol in str) {
-            if (this.isDigit(str[symbol])) {
-                result.push(str[symbol])
+        input = input.split(' ');
+        for (let i = 0; i < input.length; ++i) {
+            if (input[i] === '/' && input[i + 1] === '0') {
+                return 'error'
+            }
+            if (this.isDigit(input[i])) {
+                result.push(input[i])
             } else {
-                if (str[symbol].length > 1) {
+                if (input[i].length > 1) {
                     return 'error';
                 }
-                this.pushToStack(result, stack, str[symbol]);
+                this.pushToStack(result, stack, input[i]);
             }
         }
         while (stack.length) {
@@ -61,7 +64,7 @@ class Calculator {
     calculate(str) {
         let data = this.createString(str);
         if (data === 'error') {
-            return data;
+            return 'error';
         }
         while (data.length > 1) {
             for (let obj in data) {
@@ -80,4 +83,4 @@ class Calculator {
 
 exports.calculator = Calculator;
 // const c = new Calculator();
-// console.log(c.calculate('1 +- 2'));
+// console.log(c.calculate('1 / 0'));

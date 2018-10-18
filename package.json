@@ -10,6 +10,7 @@
     "nyc": "^13.1.0"
   },
   "devDependencies": {
+    "istanbul": "^0.4.5",
     "mocha": "^5.2.0"
   },
   "scripts": {

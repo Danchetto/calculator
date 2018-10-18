@@ -13,7 +13,7 @@ describe('calculator', function() {
     });
 
     it('check *', function() {
-        assert.equal(calculator.calculate('4 * 2'), 8);
+        assert.equal(calculator.calculate('4 * -2'), -8);
     });
 
     it('check /', function() {
@@ -24,7 +24,11 @@ describe('calculator', function() {
         assert.equal(calculator.calculate('4 * 2 - 2 * 3 + 1'), 3);
     });
 
-    it('check correct', function() {
+    it('check division by zero', function() {
+        assert.equal(calculator.calculate('1 / 0'), 'error');
+    });
+
+    it('check input line validity', function() {
         assert.equal(calculator.calculate('1 +2'), 'error');
         assert.equal(calculator.calculate('1 + 2h'), 'error');
         assert.equal(calculator.calculate('1 + 2 *'), 'error');
