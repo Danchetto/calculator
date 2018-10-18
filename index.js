@@ -7,22 +7,21 @@ class Calculator {
             '*': 2,
             '/': 2,
             '+': 1,
-            '-': 1,
-            '(': 0,
-            ')': 0
+            '-': 1
         };
 
         this.methods = {
             '+': (a, b) => a + b,
             '-': (a, b) => a - b,
             '*': (a, b) => a * b,
-            '/': (a, b) => a / b
+            '/': (a, b) => a / b,
+            '^': (a, b) => Math.pow(a, b)
         };
 
     }
 
     isDigit(data) {
-        return /^-?[0-9]+$/.test(data);
+        return /^-?[0-9]+([.][0-9])?$/.test(data);
 
     }
 
@@ -39,8 +38,8 @@ class Calculator {
     }
 
     createString(input) {
-        let result = [];
-        let stack = [];
+        const result = [];
+        const stack = [];
         input = input.split(' ');
         for (let i = 0; i < input.length; ++i) {
             if (input[i] === '/' && input[i + 1] === '0') {
@@ -62,7 +61,7 @@ class Calculator {
     }
 
     calculate(str) {
-        let data = this.createString(str);
+        const data = this.createString(str);
         if (data === 'error') {
             return 'error';
         }
@@ -83,4 +82,4 @@ class Calculator {
 
 exports.calculator = Calculator;
 // const c = new Calculator();
-// console.log(c.calculate('1 / 0'));
+// console.log(c.calculate('12 - 2 ^ 3 + 1 * 2'));

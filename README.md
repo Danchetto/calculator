@@ -1,17 +1,27 @@
-# calculator
+# Calculator
+
+Input format: operators and operands sre separated by a space.
+
+Example: 
+
+```javascript
+const a = new Calculator();
+a.calculate('1 + 3 - 3 * 5');
+```
+
 
 # Installing
 Run in console:
 
-   <code>npm i</code>
+   `npm i`
 
 # Run tests
 - Tests without coverage
 
-    <code>npm test</code>
+    `npm test`
 
 - Tests with coverage
 
-    <code>npm run test-with-coverage</code>
+    `npm run test-with-coverage`
     
-    Coverage info: <code>/coverage/lcov-report/index.html</code>
+    Coverage info: `/coverage/lcov-report/index.html`

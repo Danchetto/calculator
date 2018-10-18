@@ -13,11 +13,15 @@ describe('calculator', function() {
     });
 
     it('check *', function() {
-        assert.equal(calculator.calculate('4 * -2'), -8);
+        assert.equal(calculator.calculate('4.5 * -2'), -9);
     });
 
     it('check /', function() {
-        assert.equal(calculator.calculate('3 / 2'), 1.5);
+        assert.equal(calculator.calculate('5 / 2.5'), 2);
+    });
+
+    it('check ^', function() {
+        assert.equal(calculator.calculate('3 ^ 2'), 9);
     });
 
     it('check priority', function() {
