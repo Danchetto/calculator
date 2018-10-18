@@ -22,7 +22,7 @@ class Calculator {
     }
 
     isDigit(data) {
-        return data.test(/0-9/);
+        return /^[0-9]+$/.test(data);
 
     }
 
@@ -66,6 +66,9 @@ class Calculator {
         while (data.length > 1) {
             for (let obj in data) {
                 if (!this.isDigit(data[obj])) {
+                    if (obj < 2) {
+                        return 'error'
+                    }
                     data.splice(obj - 2, 3, this.methods[data[obj]](+data[obj - 2], +data[obj - 1]));
                     break;
                 }
@@ -75,6 +78,6 @@ class Calculator {
     }
 }
 
-// exports.calculator = Calculator;
-const c = new Calculator();
-console.log(c.calculate('1 + 2'));
+exports.calculator = Calculator;
+// const c = new Calculator();
+// console.log(c.calculate('1 +- 2'));
