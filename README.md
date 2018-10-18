@@ -1,7 +1,9 @@
 # calculator
 
 # Installing
-    <code>npm i</code>
+Run in console:
+
+   <code>npm i</code>
 
 # Run tests
 - Tests without coverage
