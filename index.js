@@ -80,6 +80,6 @@ class Calculator {
     }
 }
 
-exports.calculator = Calculator;
+exports.calculator = new Calculator();
 // const c = new Calculator();
 // console.log(c.calculate('12 - 2 ^ 3 + 1 * 2'));
