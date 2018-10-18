@@ -1,6 +1,6 @@
 # Calculator
 
-Input format: operators and operands sre separated by a space.
+Input format: operators and operands are separated by a space.
 
 Example: 
 
