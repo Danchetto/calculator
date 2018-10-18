@@ -11,3 +11,5 @@
 - Tests with coverage
 
     <code>npm run test-with-coverage</code>
+    
+    Coverage info: <code>/coverage/lcov-report/index.html</code>
