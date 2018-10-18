@@ -36,5 +36,6 @@ describe('calculator', function() {
         assert.equal(calculator.calculate('1 +2'), 'error');
         assert.equal(calculator.calculate('1 + 2h'), 'error');
         assert.equal(calculator.calculate('1 + 2 *'), 'error');
+        assert.equal(calculator.calculate('1 + 2.'), 'error');
     });
 });
